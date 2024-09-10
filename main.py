@@ -3,8 +3,8 @@ import feedparser
 # Use a pipeline as a high-level helper
 from transformers import pipeline
 
-ticker = 'GC=F'
-keyword = 'gold'
+ticker = 'META'
+keyword = 'meta'
 
 pipe = pipeline("text-classification", model="ProsusAI/finbert")
 
@@ -39,4 +39,4 @@ for i, entry in enumerate(feed.entries):
         num_articles += 1
 
 final_score = total_score / num_articles
-print(f'Overall sentiment: {"Positive" if final_score >= 0.15 else "Negative" if final_score <= -0.15 else "Neutral"} {final_score}')
+print(f'Overall sentiment: {"Positive" if final_score >= 0.15 else "Negative" if final_score  <= -0.15 else "Neutral"} {final_score}')
