@@ -19,7 +19,7 @@ url = (
     f'apiKey={API_KEY}'
 )
 
-response = requests.get(url)
+response = requests.get(url, timeout=60)
 
 articles = response.json()['articles']
 articles = [article for article in articles if keyword.lower() in article['title'].lower() or keyword.lower() in article['description'].lower()]
