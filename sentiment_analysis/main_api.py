@@ -1,7 +1,7 @@
 # Adjusted program to work with News API as opposed to RSS newsfeeds
-import requests
 
 from transformers import pipeline
+from security import safe_requests
 
 API_KEY = open('API_KEY').read()
 
@@ -19,7 +19,7 @@ url = (
     f'apiKey={API_KEY}'
 )
 
-response = requests.get(url)
+response = safe_requests.get(url)
 
 articles = response.json()['articles']
 articles = [article for article in articles if keyword.lower() in article['title'].lower() or keyword.lower() in article['description'].lower()]
